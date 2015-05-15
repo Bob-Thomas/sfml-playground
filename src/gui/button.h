@@ -44,9 +44,10 @@ namespace GUI
 
     private:
         Callback				mCallback;
-        const sf::Texture&		mNormalTexture;
-        const sf::Texture&		mSelectedTexture;
-        const sf::Texture&		mPressedTexture;
+        const sf::Texture&		mButtonTexture;
+        sf::IntRect       mButtonDefaultRect;
+        sf::IntRect       mButtonSelectedRect;
+        sf::IntRect       mButtonPressedRect;
         sf::Sprite				mSprite;
         sf::Text				mText;
         bool					mIsToggle;

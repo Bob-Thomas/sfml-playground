@@ -2,16 +2,24 @@
 // Created by bob on 30-4-2015.
 //
 
-#include <SFML/System/NonCopyable.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <src/resources/resourceHolder.hpp>
-#include <src/resources/resourceIdentifiers.hpp>
-#include <src/objects/aircraft.h>
-#include <src/command/CommandQueue.h>
-#include "sceneNode.h"
 
 #ifndef CATRPG_WORLD_H
 #define CATRPG_WORLD_H
+
+#include <src/resources/ResourceHolder.hpp>
+#include <src/resources/ResourceIdentifiers.hpp>
+#include <src/scene/sceneNode.h>
+#include <src/game/spriteNode.h>
+#include <src/objects/aircraft.h>
+#include <src/command/CommandQueue.h>
+#include <src/command/command.h>
+
+#include <SFML/System/NonCopyable.hpp>
+#include <SFML/Graphics/View.hpp>
+#include <SFML/Graphics/Texture.hpp>
+
+#include <array>
+#include <queue>
 
 // Forward declaration
 namespace sf
@@ -52,7 +60,8 @@ private:
     enum Layer
     {
         Background,
-        Air,
+        LowerAir,
+        UpperAir,
         LayerCount
     };
 

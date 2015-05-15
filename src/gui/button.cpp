@@ -3,7 +3,7 @@
 
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
-#include <SFML/Graphics/RenderTarget.hpp>
+#include <SFML/Graphics.hpp>
 
 
 namespace GUI
@@ -11,14 +11,16 @@ namespace GUI
 
     Button::Button(const FontHolder& fonts, const TextureHolder& textures)
             : mCallback()
-            , mNormalTexture(textures.get(Textures::ButtonNormal))
-            , mSelectedTexture(textures.get(Textures::ButtonSelected))
-            , mPressedTexture(textures.get(Textures::ButtonPressed))
+            , mButtonTexture(textures.get(Textures::Buttons))
+            , mButtonDefaultRect(0, 0, 200, 50)
+            , mButtonPressedRect(0, 50, 200, 50)
+            , mButtonSelectedRect(0, 100, 200, 50)
             , mSprite()
             , mText("", fonts.get(Fonts::Default), 16)
             , mIsToggle(false)
     {
-        mSprite.setTexture(mNormalTexture);
+        mSprite.setTexture(mButtonTexture);
+        mSprite.setTextureRect(mButtonDefaultRect);
 
         sf::FloatRect bounds = mSprite.getLocalBounds();
         mText.setPosition(bounds.width / 2.f, bounds.height / 2.f);
@@ -49,14 +51,14 @@ namespace GUI
     {
         Component::select();
 
-        mSprite.setTexture(mSelectedTexture);
+        mSprite.setTextureRect(mButtonSelectedRect);
     }
 
     void Button::deselect()
     {
         Component::deselect();
 
-        mSprite.setTexture(mNormalTexture);
+        mSprite.setTextureRect(mButtonPressedRect);
     }
 
     void Button::activate()
@@ -65,7 +67,7 @@ namespace GUI
 
         // If we are toggle then we should show that the button is pressed and thus "toggled".
         if (mIsToggle)
-            mSprite.setTexture(mPressedTexture);
+            mSprite.setTextureRect(mButtonPressedRect);
 
         if (mCallback)
             mCallback();
@@ -83,9 +85,9 @@ namespace GUI
         {
             // Reset texture to right one depending on if we are selected or not.
             if (isSelected())
-                mSprite.setTexture(mSelectedTexture);
+                mSprite.setTextureRect(mButtonSelectedRect);
             else
-                mSprite.setTexture(mNormalTexture);
+                mSprite.setTextureRect(mButtonDefaultRect);
         }
     }
 

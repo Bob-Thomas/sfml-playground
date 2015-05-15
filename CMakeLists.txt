@@ -73,7 +73,7 @@ set(SOURCE_FILES
     src/objects/projectile.h
     src/objects/projectile.cpp
     )
-add_executable(${EXEC_NAME} ${SOURCE_FILES} src/scene/textNode.h src/scene/textNode.cpp src/states/gameOverState.h src/states/gameOverState.cpp)
+add_executable(${EXEC_NAME} ${SOURCE_FILES} src/scene/textNode.h src/scene/textNode.cpp src/states/gameOverState.h src/states/gameOverState.cpp src/objects/particle.h src/objects/particleNode.h src/objects/particleNode.cpp src/objects/emitterNode.h src/objects/emitterNode.cpp)
 target_link_libraries(${EXEC_NAME} ${SFML_LIBRARIES})
 target_link_libraries(${EXEC_NAME} -static-libgcc)
 target_link_libraries(${EXEC_NAME} -static-libstdc++)

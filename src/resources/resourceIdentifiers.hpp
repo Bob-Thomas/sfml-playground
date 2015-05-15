@@ -12,21 +12,13 @@ namespace Textures
 {
     enum ID
     {
-        Eagle,
-        Raptor,
-        Avenger,
-        Missile,
-        Bullet,
-        HealthRefill,
-        MissileRefill,
-        FireRate,
-        FireSpread,
-        Desert,
-
+        Entities,
+        Jungle,
         TitleScreen,
-        ButtonNormal,
-        ButtonSelected,
-        ButtonPressed,
+        Buttons,
+        Explosion,
+        Particle,
+        FinishLine,
     };
 }
 
