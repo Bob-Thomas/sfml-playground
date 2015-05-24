@@ -7,6 +7,7 @@ namespace sf
 {
     class Texture;
     class Font;
+    class Shader;
 }
 namespace Textures
 {
@@ -19,6 +20,17 @@ namespace Textures
         Explosion,
         Particle,
         FinishLine,
+    };
+}
+
+namespace Shaders
+{
+    enum ID
+    {
+        BrightnessPass,
+        DownSamplePass,
+        GaussianBlurPass,
+        AddPass,
     };
 }
 
@@ -36,5 +48,6 @@ class ResourceHolder;
 
 typedef ResourceHolder<sf::Texture, Textures::ID> TextureHolder;
 typedef ResourceHolder<sf::Font, Fonts::ID> FontHolder;
+typedef ResourceHolder<sf::Shader, Shaders::ID> ShaderHolder;
 
 #endif // CATRPG_RESOURCEIDENTIFIERS_HPP

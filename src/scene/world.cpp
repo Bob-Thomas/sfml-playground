@@ -13,11 +13,18 @@
 #include <algorithm>
 #include <cmath>
 #include <limits>
-World::World(sf::RenderWindow &window, FontHolder &fonts)
-        : mWindow(window), mWorldView(window.getDefaultView()), mFonts(fonts), mTextures(), mSceneGraph(),
-          mSceneLayers(), mWorldBounds(0.f, 0.f, mWorldView.getSize().x, 2000.f),
-          mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldBounds.height - mWorldView.getSize().y / 2.f),
-          mScrollSpeed(-50.f), mPlayerAircraft(nullptr), mEnemySpawnPoints(), mActiveEnemies() {
+#include <src/shaders/PostEffect.h>
+
+World::World(sf::RenderTarget &outputTarget, FontHolder &fonts) : mTarget(outputTarget),
+                                                                  mWorldView(outputTarget.getDefaultView()),
+                                                                  mFonts(fonts),
+                                                                  mTextures(),
+                                                                  mSceneGraph(),
+                                                                  mSceneLayers(),
+                                                                  mWorldBounds(0.f, 0.f, mWorldView.getSize().x, 2000.f),
+                                                                  mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldBounds.height - mWorldView.getSize().y / 2.f),
+                                                                  mScrollSpeed(-50.f), mPlayerAircraft(nullptr), mEnemySpawnPoints(), mActiveEnemies()
+{
     loadTextures();
     buildScene();
 
@@ -52,8 +59,17 @@ void World::update(sf::Time dt) {
 }
 
 void World::draw() {
-    mWindow.setView(mWorldView);
-    mWindow.draw(mSceneGraph);
+    if(PostEffect::isSupported()) {
+        mSceneTexture.clear();
+        mSceneTexture.setView(mWorldView);
+        mSceneTexture.draw(mSceneGraph);
+        mSceneTexture.display();
+        mBloomEffect.apply(mSceneTexture, mTarget);
+    }
+    else {
+        mTarget.setView(mWorldView);
+        mTarget.draw(mSceneGraph);
+    }
 }
 
 CommandQueue &World::getCommandQueue() {
@@ -69,9 +85,11 @@ bool World::hasPlayerReachedEnd() const {
 }
 
 void World::loadTextures() {
+    mTextures.load(Textures::Explosion, "resources/textures/Explosion.png");
     mTextures.load(Textures::Entities, "resources/textures/Entities.png");
     mTextures.load(Textures::Jungle, "resources/textures/Jungle.png");
     mTextures.load(Textures::Particle, "resources/textures/Particle.png");
+    mSceneTexture.create(mTarget.getSize().x, mTarget.getSize().y);
 }
 
 void World::adaptPlayerPosition() {
@@ -173,6 +191,9 @@ void World::buildScene() {
 
     std::unique_ptr<ParticleNode> smokeNode(new ParticleNode(Particle::Smoke, mTextures));
     mSceneLayers[LowerAir]->attachChild(std::move(smokeNode));
+
+    std::unique_ptr<ParticleNode> propellantNode(new ParticleNode(Particle::Propellant, mTextures));
+    mSceneLayers[LowerAir]->attachChild(std::move(propellantNode));
 
     // Add player's aircraft
     std::unique_ptr<Aircraft> player(new Aircraft(Aircraft::Eagle, mTextures, mFonts));

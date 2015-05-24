@@ -20,6 +20,7 @@
 
 #include <array>
 #include <queue>
+#include <src/shaders/BloomEffect.h>
 
 // Forward declaration
 namespace sf
@@ -30,7 +31,7 @@ namespace sf
 class World : private sf::NonCopyable
 {
 public:
-    explicit							World(sf::RenderWindow& window, FontHolder& fonts);
+    explicit							World(sf::RenderTarget& outputTarget, FontHolder& fonts);
     void								update(sf::Time dt);
     void								draw();
 
@@ -81,11 +82,12 @@ private:
 
 
 private:
-    sf::RenderWindow&					mWindow;
+    sf::RenderTarget&					mTarget;
     sf::View							mWorldView;
     TextureHolder						mTextures;
     FontHolder&							mFonts;
 
+    sf::RenderTexture					mSceneTexture;
     SceneNode							mSceneGraph;
     std::array<SceneNode*, LayerCount>	mSceneLayers;
     CommandQueue						mCommandQueue;
@@ -97,6 +99,7 @@ private:
 
     std::vector<SpawnPoint>				mEnemySpawnPoints;
     std::vector<Aircraft*>				mActiveEnemies;
+    BloomEffect							mBloomEffect;
 };
 
 #endif //CATRPG_WORLD_H
