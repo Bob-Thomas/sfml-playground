@@ -9,7 +9,7 @@
 #include <functional>
 #include <SFML/System/Time.hpp>
 #include <SFML/Graphics.hpp>
-#include <src/resources/resourceIdentifiers.hpp>\
+#include <src/resources/resourceIdentifiers.hpp>
 
 class Aircraft;
 

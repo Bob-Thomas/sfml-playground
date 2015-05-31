@@ -10,7 +10,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
 #include "component.h"
-
+#include <functional>
 namespace GUI
 {
 

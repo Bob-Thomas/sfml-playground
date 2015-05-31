@@ -5,9 +5,8 @@
 #ifndef CATRPG_SCENENODE_H
 #define CATRPG_SCENENODE_H
 
-#include <bits/unique_ptr.h>
+#include <memory>
 #include <SFML/Graphics.hpp>
-#include <bits/algorithmfwd.h>
 #include <assert.h>
 #include <src/command/command.h>
 #include <src/objects/categories.h>

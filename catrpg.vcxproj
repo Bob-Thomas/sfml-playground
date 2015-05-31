@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8F6A7E94-A539-49C4-B9D9-EB4880EC8D6C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)Dependencies\SFML\include;E:\Users\bob\ClionProjects\catrpg2.6;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\SFML\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>E:\Users\bob\ClionProjects\catrpg2.6;$(SolutionDir)Dependencies\SFML\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\SFML\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-window-d.lib;sfml-system-d.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>sfml-audio.lib;sfml-graphics.lib;sfml-network.lib;sfml-window.lib;sfml-system.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\animation\animation.cpp" />
+    <ClCompile Include="src\asynctasks\parallelTask.cpp" />
+    <ClCompile Include="src\command\command.cpp" />
+    <ClCompile Include="src\command\CommandQueue.cpp" />
+    <ClCompile Include="src\entity\dataTables.cpp" />
+    <ClCompile Include="src\entity\entity.cpp" />
+    <ClCompile Include="src\game\spriteNode.cpp" />
+    <ClCompile Include="src\gui\button.cpp" />
+    <ClCompile Include="src\gui\component.cpp" />
+    <ClCompile Include="src\gui\container.cpp" />
+    <ClCompile Include="src\gui\label.cpp" />
+    <ClCompile Include="src\helpers\utility.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\objects\aircraft.cpp" />
+    <ClCompile Include="src\objects\emitterNode.cpp" />
+    <ClCompile Include="src\objects\particleNode.cpp" />
+    <ClCompile Include="src\objects\pickup.cpp" />
+    <ClCompile Include="src\objects\projectile.cpp" />
+    <ClCompile Include="src\player.cpp" />
+    <ClCompile Include="src\scene\sceneNode.cpp" />
+    <ClCompile Include="src\scene\textNode.cpp" />
+    <ClCompile Include="src\scene\world.cpp" />
+    <ClCompile Include="src\shaders\BloomEffect.cpp" />
+    <ClCompile Include="src\shaders\PostEffect.cpp" />
+    <ClCompile Include="src\statearchitecture\application.cpp" />
+    <ClCompile Include="src\statearchitecture\state.cpp" />
+    <ClCompile Include="src\statearchitecture\stateStack.cpp" />
+    <ClCompile Include="src\states\gameOverState.cpp" />
+    <ClCompile Include="src\states\gameState.cpp" />
+    <ClCompile Include="src\states\loadingState.cpp" />
+    <ClCompile Include="src\states\menuState.cpp" />
+    <ClCompile Include="src\states\pauseState.cpp" />
+    <ClCompile Include="src\states\settingState.cpp" />
+    <ClCompile Include="src\states\titleState.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\animation\animation.h" />
+    <ClInclude Include="src\asynctasks\parallelTask.h" />
+    <ClInclude Include="src\command\command.h" />
+    <ClInclude Include="src\command\CommandQueue.h" />
+    <ClInclude Include="src\entity\dataTables.h" />
+    <ClInclude Include="src\entity\entity.h" />
+    <ClInclude Include="src\game\spriteNode.h" />
+    <ClInclude Include="src\gui\button.h" />
+    <ClInclude Include="src\gui\component.h" />
+    <ClInclude Include="src\gui\container.h" />
+    <ClInclude Include="src\gui\label.h" />
+    <ClInclude Include="src\helpers\utility.h" />
+    <ClInclude Include="src\objects\aircraft.h" />
+    <ClInclude Include="src\objects\categories.h" />
+    <ClInclude Include="src\objects\emitterNode.h" />
+    <ClInclude Include="src\objects\particle.h" />
+    <ClInclude Include="src\objects\particleNode.h" />
+    <ClInclude Include="src\objects\pickup.h" />
+    <ClInclude Include="src\objects\projectile.h" />
+    <ClInclude Include="src\player.h" />
+    <ClInclude Include="src\resources\resourceHolder.hpp" />
+    <ClInclude Include="src\resources\resourceIdentifiers.hpp" />
+    <ClInclude Include="src\scene\sceneNode.h" />
+    <ClInclude Include="src\scene\textNode.h" />
+    <ClInclude Include="src\scene\world.h" />
+    <ClInclude Include="src\shaders\BloomEffect.h" />
+    <ClInclude Include="src\shaders\PostEffect.h" />
+    <ClInclude Include="src\statearchitecture\application.h" />
+    <ClInclude Include="src\statearchitecture\state.h" />
+    <ClInclude Include="src\statearchitecture\stateIdentifiers.h" />
+    <ClInclude Include="src\statearchitecture\stateStack.h" />
+    <ClInclude Include="src\states\gameOverState.h" />
+    <ClInclude Include="src\states\gameState.h" />
+    <ClInclude Include="src\states\loadingState.h" />
+    <ClInclude Include="src\states\menuState.h" />
+    <ClInclude Include="src\states\pauseState.h" />
+    <ClInclude Include="src\states\settingState.h" />
+    <ClInclude Include="src\states\titleState.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\helpers\utility.inl" />
+    <None Include="src\resources\resourceHolder.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

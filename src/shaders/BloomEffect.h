@@ -6,7 +6,7 @@
 #ifndef CATRPG_BLOOMEFFECT_H
 #define CATRPG_BLOOMEFFECT_H
 #include "PostEffect.h"
-
+#include <array>
 #include <src/resources/resourceIdentifiers.hpp>
 #include <src/resources/resourceHolder.hpp>
 

@@ -10,6 +10,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <src/animation/animation.h>
 #include <assert.h>
+#include <random>
 
 namespace
 {

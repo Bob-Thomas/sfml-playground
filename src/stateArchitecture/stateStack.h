@@ -7,7 +7,8 @@
 
 #include "stateIdentifiers.h"
 #include "state.h"
-
+#include <vector>
+#include <functional>
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/System/Time.hpp>
 #include <SFML/Window/Event.hpp>
